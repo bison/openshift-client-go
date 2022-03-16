@@ -12,6 +12,10 @@ type FakeMonitoringV1alpha1 struct {
 	*testing.Fake
 }
 
+func (c *FakeMonitoringV1alpha1) AlertRelabelConfigs(namespace string) v1alpha1.AlertRelabelConfigInterface {
+	return &FakeAlertRelabelConfigs{c, namespace}
+}
+
 func (c *FakeMonitoringV1alpha1) AlertingRules(namespace string) v1alpha1.AlertingRuleInterface {
 	return &FakeAlertingRules{c, namespace}
 }

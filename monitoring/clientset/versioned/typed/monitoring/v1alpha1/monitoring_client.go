@@ -12,12 +12,17 @@ import (
 
 type MonitoringV1alpha1Interface interface {
 	RESTClient() rest.Interface
+	AlertRelabelConfigsGetter
 	AlertingRulesGetter
 }
 
 // MonitoringV1alpha1Client is used to interact with features provided by the monitoring.openshift.io group.
 type MonitoringV1alpha1Client struct {
 	restClient rest.Interface
+}
+
+func (c *MonitoringV1alpha1Client) AlertRelabelConfigs(namespace string) AlertRelabelConfigInterface {
+	return newAlertRelabelConfigs(c, namespace)
 }
 
 func (c *MonitoringV1alpha1Client) AlertingRules(namespace string) AlertingRuleInterface {
