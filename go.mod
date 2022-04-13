@@ -10,3 +10,5 @@ require (
 	k8s.io/client-go v0.23.0
 	k8s.io/code-generator v0.23.0
 )
+
+replace github.com/openshift/api => github.com/bison/openshift-api v0.0.0-20220413105410-c56cad9d6d90
